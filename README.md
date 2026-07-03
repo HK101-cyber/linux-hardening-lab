@@ -3,7 +3,7 @@ CIS Ubuntu 22.04 LTS Benchmark-based hardening project.
 
 ## Status
 - [x] Phase 1: Baseline Assessment — Lynis score: 57
-- [ ] Phase 2: Filesystem Hardening
+- [x] Phase 2: Filesystem Hardening
 - [ ] Phase 3: Software and Updates
 - [ ] Phase 4: Process Hardening
 - [ ] Phase 5: SSH Hardening
