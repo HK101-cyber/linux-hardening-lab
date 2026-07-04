@@ -121,3 +121,39 @@ Result: empty = secure default active
 Lesson learned: dpkg -l | grep can give false positives from library 
 names (e.g. "avahi" matches libavahi-client3, which isn't the actual 
 service). Always double check with the -daemon or actual service name.
+## PHASE 4 — Process Hardening
+Date: 2026-07-04
+
+Checked ASLR (already enabled by default):
+cat /proc/sys/kernel/randomize_va_space
+Result: 2 (full ASLR)
+
+Disabled core dumps - session level:
+ulimit -c
+Result: 0 (already disabled)
+
+Disabled core dumps - system-wide permanent:
+sudo nano /etc/security/limits.conf
+Added: *    hard   core   0
+
+Created kernel hardening config:
+sudo nano /etc/sysctl.d/99-hardening.conf
+Added:
+kernel.randomize_va_space = 2
+fs.suid_dumpable = 0
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+kernel.kptr_restrict = 2
+kernel.dmesg_restrict = 1
+
+Applied settings:
+sudo sysctl --system
+
+Verified each setting individually:
+sysctl kernel.kptr_restrict
+sysctl kernel.dmesg_restrict
+sudo sysctl fs.protected_symlinks
+Result: all confirmed correct (2, 1, 1)
+
+Lesson learned: some fs.* sysctl keys need sudo to even READ them, 
+not just write - got "permission denied" without sudo.
