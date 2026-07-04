@@ -6,7 +6,7 @@ CIS Ubuntu 22.04 LTS Benchmark-based hardening project.
 - [x] Phase 2: Filesystem Hardening
 - [ ] Phase 3: Software and Updates
 - [ ] Phase 4: Process Hardening
-- [ ] Phase 5: SSH Hardening
+- [x] Phase 5: SSH Hardening
 - [ ] Phase 6: Password Policy
 - [ ] Phase 7: User and Group Security
 - [ ] Phase 8: Auditd Configuration
