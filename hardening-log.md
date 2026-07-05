@@ -1,0 +1,66 @@
+# Hardening Log — Linux Hardening Lab
+
+Chronological log of every phase, including real incidents encountered.
+Full command-by-command detail lives in notes/command-log.md — this file 
+is the higher-level summary version.
+
+## Phase 1 — Baseline Assessment (July 2, 2026)
+Installed Lynis from the official CISOfy repository. Ran the first full 
+system audit. Baseline Hardening Index recorded: 57/100.
+
+## Phase 2 — Filesystem Hardening (July 3, 2026)
+Hardened /tmp (noexec,nosuid,nodev), verified sticky bit compliance, 
+disabled unused filesystem kernel modules (with a documented squashfs 
+exception for snap dependency), and restricted /proc visibility with hidepid=2.
+
+## Phase 3 — Software and Updates (July 4, 2026)
+Configured unattended-upgrades restricted to security-only repositories, 
+with scheduled automatic reboot. Removed telnet. Verified GPG package 
+signing is still enforced.
+
+## Phase 4 — Process Hardening (July 4, 2026)
+Verified ASLR is active. Disabled core dumps system-wide and for SUID 
+binaries. Applied kernel hardening sysctl parameters (kptr_restrict, 
+dmesg_restrict, protected_symlinks/hardlinks).
+
+## Phase 5 — SSH Hardening (July 4, 2026)
+Generated SSH key pair, verified key login before disabling passwords. 
+Disabled root login, changed SSH port to 2222, disabled password 
+authentication, configured UFW for the new port.
+
+**Incident:** cloud-init's auto-generated /etc/ssh/sshd_config.d/50-cloud-init.conf 
+silently re-enabled password authentication, overriding the main config 
+due to Include-file load order. Diagnosed using `sshd -T` (effective 
+running config) rather than trusting the raw config file. Fixed at the 
+source file and reverified.
+
+## Phase 6 — Password Policy (July 5, 2026)
+Configured password aging (90/7/14 days), password complexity via 
+pam_pwquality (12 char minimum, mixed case/digit/symbol), and account 
+lockout via pam_faillock (5 attempts / 15 min).
+
+**Incident 1:** pwquality.conf edits initially appeared not to apply — 
+caused by a leading space left behind after removing comment markers, 
+which broke a strict `^`-anchored grep check used to verify the config.
+
+**Incident 2:** root bypasses pwquality enforcement when changing another 
+user's password via `sudo passwd` — shows a warning but still allows a 
+weak password through. Root cause: `enforce_for_root` is disabled by 
+default. Documented as a known, accepted gap for now.
+
+**Incident 3 (major):** the pam_faillock lines added to 
+/etc/pam.d/common-auth broke su/sudo authentication entirely, independent 
+of password correctness. This was discovered while deliberately testing 
+lockout behavior, and was compounded by repeated failed sudo attempts 
+made while diagnosing it, which also triggered the account's own lockout 
+counter. Recovered via GRUB recovery mode (root shell, password reset, 
+faillock counter reset). Root cause of the PAM issue was isolated using 
+comparative behavior between `passwd` and `su` (different PAM service 
+files), and resolved by removing the faulty pam_faillock lines entirely.
+
+Lockout is being reconfigured and will be re-tested more incrementally 
+next session, verifying each PAM line individually before testing lockout 
+behavior again.
+
+## Phases 7-15
+Not yet started.
