@@ -62,5 +62,28 @@ Lockout is being reconfigured and will be re-tested more incrementally
 next session, verifying each PAM line individually before testing lockout 
 behavior again.
 
-## Phases 7-15
-Not yet started.
+## Phase 7 — User and Group Security (July 6, 2026)
+Audited all shell accounts — only root, hammad, and splunk have real 
+shells. Splunk account confirmed locked (passwd -S shows L status).
+No empty passwords found. Only root has UID 0 — no backdoor accounts.
+Sudo group contains only hammad. No NOPASSWD entries in sudoers.
+sudoers.d/ contains only a README — no software has granted itself sudo.
+su command restricted to suusers group via pam_wheel in /etc/pam.d/su.
+Sensitive file permissions verified compliant (/etc/shadow and /etc/gshadow 
+are root:shadow 640 — not world-readable).
+World-writable file audit found 26 files, all within 
+/opt/splunk/etc/apps/splunk_gdi/ — a known Splunk app behavior, 
+documented as accepted exception tied to co-located Splunk installation.
+
+## Phase 8 — Auditd Configuration (July 6, 2026)
+Installed auditd and audispd-plugins. Created comprehensive audit rules
+file at /etc/audit/rules.d/hardening.rules covering: time changes,
+user/group modifications, network environment changes, login/logout
+events, session initiation, DAC permission changes, unauthorized file
+access attempts, privileged commands (sudo/su/passwd), filesystem mounts,
+file deletion, sudoers changes, kernel module loading, and SSH config
+changes. Rules loaded with immutable flag (-e 2) — cannot be modified
+without a reboot. Verified with ausearch showing a real captured
+privileged event (sudo whoami) with full forensic detail (who, what,
+when, from where, success/fail). Log retention configured: 50MB per
+file, 10 files retained (500MB total).

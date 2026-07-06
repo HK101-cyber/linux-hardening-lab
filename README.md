@@ -43,8 +43,8 @@ graph LR
 | 4 | Process Hardening                   | ✅ Complete     |
 | 5 | SSH Hardening                       | ✅ Complete     |
 | 6 | Password Policy                     | 🔄 In Progress  |
-| 7 | User and Group Security             | ⬜ Not Started  |
-| 8 | Auditd Configuration                | ⬜ Not Started  |
+| 7 | User and Group Security             | ✅ Complete     |
+| 8 | Auditd Configuration                | ✅ Complete     |
 | 9 | Network Hardening                   | ⬜ Not Started  |
 | 10 | File Integrity Monitoring (AIDE)   | ⬜ Not Started  |
 | 11 | AppArmor                           | ⬜ Not Started  |
