@@ -87,3 +87,22 @@ without a reboot. Verified with ausearch showing a real captured
 privileged event (sudo whoami) with full forensic detail (who, what,
 when, from where, success/fail). Log retention configured: 50MB per
 file, 10 files retained (500MB total).
+## Phase 9 — Network Hardening (July 6, 2026)
+UFW already active with default deny incoming policy. Existing rules
+audited — all ports confirmed justified (SSH 2222, ELK 9200/5601/5044/8220,
+Splunk 8000/9997). Three improvements made:
+1. SSH port 2222 upgraded from ALLOW to LIMIT (rate-limiting for
+   brute-force protection — blocks IPs after 6 attempts in 30 seconds)
+2. Elasticsearch port 9200 restricted from Anywhere to localhost only
+   (unauthenticated API exposure risk eliminated)
+3. UFW logging upgraded from low to medium (logs both allowed and denied)
+
+Network sysctl hardening applied to /etc/sysctl.d/99-hardening.conf:
+ip_forward=0, send_redirects=0, accept_redirects=0, accept_source_route=0,
+log_martians=1, icmp_echo_ignore_broadcasts=1, tcp_syncookies=1.
+
+INCIDENT: log_martians refused to stay at 1 despite being correctly set
+in 99-hardening.conf. Root cause: a network service reinitializes
+interface settings after sysctl.d files load during boot, resetting it
+back to 0. Fix: also added log_martians=1 to /etc/sysctl.conf which
+loads later in the boot sequence, ensuring the setting persists.

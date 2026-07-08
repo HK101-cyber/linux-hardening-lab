@@ -45,7 +45,7 @@ graph LR
 | 6 | Password Policy                     | 🔄 In Progress  |
 | 7 | User and Group Security             | ✅ Complete     |
 | 8 | Auditd Configuration                | ✅ Complete     |
-| 9 | Network Hardening                   | ⬜ Not Started  |
+| 9 | Network Hardening                   | ✅ Complete     |
 | 10 | File Integrity Monitoring (AIDE)   | ⬜ Not Started  |
 | 11 | AppArmor                           | ⬜ Not Started  |
 | 12 | Login Banners and Warnings         | ⬜ Not Started  |

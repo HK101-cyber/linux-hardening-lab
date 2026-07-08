@@ -28,3 +28,15 @@
 | 4.1.13  | Audit rules — kernel module loading | 8 | Implemented |
 | 4.1.14  | Audit rules — SSH config changes | 8 | Implemented |
 | 4.2.x   | Auditd log retention configured | 8 | Implemented |
+| 3.1.1   | IP forwarding disabled | 9 | Implemented |
+| 3.1.2   | Send redirects disabled | 9 | Implemented |
+| 3.2.1   | Source routed packets rejected | 9 | Implemented |
+| 3.2.2   | ICMP redirects rejected | 9 | Implemented |
+| 3.2.3   | Secure ICMP redirects rejected | 9 | Implemented |
+| 3.2.4   | Suspicious packets logged (log_martians) | 9 | Implemented |
+| 3.2.5   | Broadcast ICMP ignored | 9 | Implemented |
+| 3.2.6   | Bogus ICMP responses ignored | 9 | Implemented |
+| 3.2.7   | TCP SYN cookies enabled | 9 | Implemented |
+| 3.5.x   | UFW firewall configured — default deny incoming | 9 | Implemented |
+| 3.5.x   | SSH rate-limited (LIMIT rule) | 9 | Implemented |
+| 3.5.x   | Elasticsearch restricted to localhost | 9 | Implemented |

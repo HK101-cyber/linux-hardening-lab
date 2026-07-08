@@ -1,0 +1,23 @@
+Status: active
+Logging: on (medium)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+5601                       ALLOW IN    Anywhere                  
+5044                       ALLOW IN    Anywhere                  
+8220                       ALLOW IN    Anywhere                  
+8000                       ALLOW IN    Anywhere                  
+9997                       ALLOW IN    Anywhere                  
+2222/tcp                   LIMIT IN    Anywhere                  
+9200                       ALLOW IN    127.0.0.1                 
+22                         DENY IN     Anywhere                  
+5601 (v6)                  ALLOW IN    Anywhere (v6)             
+5044 (v6)                  ALLOW IN    Anywhere (v6)             
+8220 (v6)                  ALLOW IN    Anywhere (v6)             
+8000 (v6)                  ALLOW IN    Anywhere (v6)             
+9997 (v6)                  ALLOW IN    Anywhere (v6)             
+2222/tcp (v6)              LIMIT IN    Anywhere (v6)             
+22 (v6)                    DENY IN     Anywhere (v6)             
+
