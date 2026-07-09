@@ -106,3 +106,13 @@ in 99-hardening.conf. Root cause: a network service reinitializes
 interface settings after sysctl.d files load during boot, resetting it
 back to 0. Fix: also added log_martians=1 to /etc/sysctl.conf which
 loads later in the boot sequence, ensuring the setting persists.
+## Phase 10 — File Integrity Monitoring / AIDE (July 8, 2026)
+Installed AIDE. Initialized baseline database scanning 353,113 filesystem
+entries using multiple hash algorithms (SHA256, SHA512, etc.). Database
+took 52 minutes to initialize — full system scan. Activated database by
+copying aide.db.new to aide.db. Ran first integrity check — found 8 added,
+2 removed, 5 changed entries. All changes verified as expected normal
+system behavior: running services writing logs (auditd, logstash, ufw),
+systemd runtime directories, and the AIDE database file itself. Zero
+suspicious changes. Scheduled daily automated check via root crontab at
+3 AM, logging to /var/log/aide-check.log.

@@ -39,4 +39,6 @@
 | 3.2.7   | TCP SYN cookies enabled | 9 | Implemented |
 | 3.5.x   | UFW firewall configured — default deny incoming | 9 | Implemented |
 | 3.5.x   | SSH rate-limited (LIMIT rule) | 9 | Implemented |
-| 3.5.x   | Elasticsearch restricted to localhost | 9 | Implemented |
+| 1.4.1   | AIDE installed | 10 | Implemented |
+| 1.4.2   | Filesystem baseline database initialized (353,113 entries) | 10 | Implemented |
+| 1.4.3   | Daily AIDE integrity check scheduled via cron (3 AM) | 10 | Implemented || 3.5.x   | Elasticsearch restricted to localhost | 9 | Implemented |
