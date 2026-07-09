@@ -117,4 +117,16 @@ systemd runtime directories, and the AIDE database file itself. Zero
 suspicious changes. Scheduled daily automated check via root crontab at
 3 AM, logging to /var/log/aide-check.log.
 ## Phase 11 — AppArmor Confinement (July 9, 2026)
-Verified AppArmor default installation status (40 profiles enforced). Installed `apparmor-profiles` and `apparmor-profiles-extra` to expand coverage to 65 profiles. Installed `apparmor-utils` to resolve missing enforcement binaries. Enforced all 65 system profiles using `aa-enforce`, eliminating all weak 'complain' mode configurations. This ensures strict Mandatory Access Control (MAC) across core network and system utilities, mitigating potential privilege escalation vectors (MITRE T1068).
+Verified AppArmor default installation status (40 profiles enforced). 
+Installed `apparmor-profiles` and `apparmor-profiles-extra` to expand coverage to 65 profiles.
+Installed `apparmor-utils` to resolve missing enforcement binaries. 
+Enforced all 65 system profiles using `aa-enforce`, 
+eliminating all weak 'complain' mode configurations. 
+This ensures strict Mandatory Access Control (MAC) across core network and system utilities, 
+mitigating potential privilege escalation vectors (MITRE T1068).
+## Phase 12 — Login Banners and Warnings (July 9, 2026)
+Scrubbed default Ubuntu distribution information leaks from pre-login environments. 
+Implemented a legally binding warning banner across both local console (`/etc/issue`) and network-facing (`/etc/issue.net`) entry points. 
+Created a minimal, security-focused post-login Message of the Day (`/etc/motd`). 
+Applied strict ownership (`root:root`) and permission levels (`644`). 
+Configured and verified the `Banner` directive within `/etc/ssh/sshd_config` to explicitly enable pre-authentication warning capabilities.

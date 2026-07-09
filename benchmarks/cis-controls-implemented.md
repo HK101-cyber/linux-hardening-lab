@@ -43,3 +43,7 @@
 | **1.4.3** | Daily AIDE integrity check scheduled via cron (3 AM) | 10 | Implemented |
 | **1.6.1.1** | AppArmor installed and enabled in bootloader | 11 | Implemented |
 | **1.6.1.2** | All AppArmor profiles set to enforce mode | 11 | Implemented |
+| 1.7.1.1 | Local login warning banner configured (/etc/issue) | 12 | Implemented |
+| 1.7.1.2 | Remote login warning banner configured (/etc/issue.net) | 12 | Implemented |
+| 1.7.1.4 | File permissions and ownership set on login banners | 12 | Implemented |
+| 5.2.14  | SSH Banner configured to display /etc/issue.net | 12 | Implemented |
