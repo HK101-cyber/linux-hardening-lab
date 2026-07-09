@@ -116,3 +116,5 @@ system behavior: running services writing logs (auditd, logstash, ufw),
 systemd runtime directories, and the AIDE database file itself. Zero
 suspicious changes. Scheduled daily automated check via root crontab at
 3 AM, logging to /var/log/aide-check.log.
+## Phase 11 — AppArmor Confinement (July 9, 2026)
+Verified AppArmor default installation status (40 profiles enforced). Installed `apparmor-profiles` and `apparmor-profiles-extra` to expand coverage to 65 profiles. Installed `apparmor-utils` to resolve missing enforcement binaries. Enforced all 65 system profiles using `aa-enforce`, eliminating all weak 'complain' mode configurations. This ensures strict Mandatory Access Control (MAC) across core network and system utilities, mitigating potential privilege escalation vectors (MITRE T1068).
