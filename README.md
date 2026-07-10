@@ -47,8 +47,8 @@ graph LR
 | 8 | Auditd Configuration                | ✅ Complete     |
 | 9 | Network Hardening                   | ✅ Complete     |
 | 10 | File Integrity Monitoring (AIDE)   | ✅ Complete     |
-| 11 | AppArmor                           | ⬜ Not Started  |
-| 12 | Login Banners and Warnings         | ⬜ Not Started  |
+| 11 | AppArmor                           | ✅ Complete     |
+| 12 | Login Banners and Warnings         | ✅ Complete     |
 | 13 | Final Lynis Scan                   | ⬜ Not Started  |
 | 14 | Automated Hardening Script         | ⬜ Not Started  |
 | 15 | Professional Report                | ⬜ Not Started  |

@@ -47,3 +47,7 @@
 | 1.7.1.2 | Remote login warning banner configured (/etc/issue.net) | 12 | Implemented |
 | 1.7.1.4 | File permissions and ownership set on login banners | 12 | Implemented |
 | 5.2.14  | SSH Banner configured to display /etc/issue.net | 12 | Implemented |
+| 1.6.x   | AppArmor enabled, expanded to 65 profiles, all in enforce mode | 11 | Implemented |
+| 1.7.x   | Login warning banner (/etc/issue, /etc/issue.net) | 12 | Implemented |
+| 1.7.x   | SSH pre-auth banner configured | 12 | Implemented |
+| 1.7.x   | MOTD configured, no OS version leakage | 12 | Implemented |
