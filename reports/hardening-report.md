@@ -160,3 +160,6 @@ This project delivered a measurable, verifiable security improvement Lynis Harde
 Equally significant: the ability to troubleshoot real configuration failures (a silently-overriding cloud-init SSH setting, a PAM misconfiguration, kernel parameters resetting at boot), the judgment to make and document risk-based exceptions, and the resilience to fully recover from a genuine incident rebuilding faster and more correctly than the original build, using nothing but the project's own documentation.
 
 **Repository:** github.com/HK101-cyber/linux-hardening-lab
+**LinkedIn:** [hammad-khan-sec](https://www.linkedin.com/in/hammad-khan-sec)
+**TryHackMe:** [PentesterHK](https://tryhackme.com/p/PentesterHK)
+**LetsDefend:** [HK101cyber](https://app.letsdefend.io/user/HK101cyber)
