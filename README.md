@@ -1,7 +1,7 @@
 # Linux Hardening Lab — CIS Benchmark Implementation
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Lynis](https://img.shields.io/badge/Lynis%20Baseline-57-blue)
+![Lynis](https://img.shields.io/badge/Lynis%20Final-79-brightgreen)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%2022.04-orange)
 
 Ubuntu Server 22.04 hardened toward a CIS Benchmark Level 1 baseline, one control at a time. Lynis auditing, PAM password policy, SSH key-based access control, kernel-level sysctl hardening, automated security patching. Real troubleshooting incidents documented, not edited out — see `hardening-log.md`.
@@ -14,7 +14,7 @@ Ubuntu Server 22.04 hardened toward a CIS Benchmark Level 1 baseline, one contro
 | Start Date     | July 2, 2026                |
 | Last Updated   | July 5, 2026                |
 | Status         | Phase 6 of 15 in progress   |
-| Baseline Score | 57 / 100 (Lynis)            |
+| Baseline Score | 57 / 100 (Lynis) — Final: 79 / 100            |
 
 ## Lab Architecture
 
@@ -49,7 +49,7 @@ graph LR
 | 10 | File Integrity Monitoring (AIDE)   | ✅ Complete     |
 | 11 | AppArmor                           | ✅ Complete     |
 | 12 | Login Banners and Warnings         | ✅ Complete     |
-| 13 | Final Lynis Scan                   | ⬜ Not Started  |
+| 13 | Final Lynis Scan                   | ✅ Complete     |
 | 14 | Automated Hardening Script         | ⬜ Not Started  |
 | 15 | Professional Report                | ⬜ Not Started  |
 

@@ -130,3 +130,55 @@ Implemented a legally binding warning banner across both local console (`/etc/is
 Created a minimal, security-focused post-login Message of the Day (`/etc/motd`). 
 Applied strict ownership (`root:root`) and permission levels (`644`). 
 Configured and verified the `Banner` directive within `/etc/ssh/sshd_config` to explicitly enable pre-authentication warning capabilities.
+## Major Incident — GRUB Lockout, Disk Loss, and Full Rebuild (July 18, 2026)
+
+During Phase 13 quick-win hardening, a GRUB bootloader password was 
+configured using `superusers`/`password_pbkdf2` without also marking 
+default boot entries as `--unrestricted`. This caused GRUB to require 
+authentication just to boot normally, not only to edit entries as intended.
+
+While attempting recovery via the Ubuntu Live ISO (to edit the disk 
+directly and remove the faulty GRUB config), the installer was 
+accidentally engaged before backing out, which repartitioned and 
+reformatted the original 50GB virtual disk (ubuntu-SEIM.vdi). Data 
+recovery was attempted using TestDisk (Quick Search), which confirmed 
+the new partition table was structurally consistent and clean — meaning 
+the original LVM-based filesystem had been fully overwritten, not 
+partially. Recovery was not possible.
+
+**Decision:** rather than continue pursuing uncertain data recovery, 
+the VM was rebuilt from scratch using this repo's own documentation 
+(notes/command-log.md and configs/) as the exact runbook. All 12 
+completed phases were re-applied to a fresh Ubuntu Server 22.04 install, 
+using the same hostname, static IP, and saved configuration files — 
+in most cases copying saved configs directly from this repo rather than 
+re-deriving settings, which made the rebuild significantly faster than 
+the original build.
+
+**Key improvement made during rebuild:** the GRUB password was 
+reconfigured correctly this time, adding `--unrestricted` to 
+`/etc/grub.d/10_linux`'s CLASS line before regenerating grub.cfg — 
+verified with a real reboot that normal boot requires no password, 
+while edit/recovery mode remains protected.
+
+**Second architecture change:** Phase 6's account lockout, which 
+previously caused a separate serious incident (pam_faillock breaking 
+sudo/su authentication entirely), was deliberately NOT reintroduced. 
+fail2ban (network-level IP banning, configured in Phase 13) was used 
+instead as the brute-force protection mechanism — a safer design, since 
+it cannot lock out local sudo/su access the way a PAM-level lockout can.
+
+**Final rebuild result:** fresh baseline Lynis score of 64/100 (higher 
+than the original 57, due to a newer Lynis version and Ubuntu point 
+release), improved to a final score of 79/100 after all 13 phases plus 
+Phase 13 quick wins (fail2ban, purged legacy kernel packages, password 
+hashing rounds, corrected GRUB password). This represents a +22 point 
+improvement over the original documented baseline.
+
+Lesson learned: GRUB's `superusers` directive requires `--unrestricted` 
+on default boot entries to avoid requiring authentication for normal 
+boot — this is not obvious from GRUB's own documentation structure and 
+is a common real-world misconfiguration. Also: full-disk recovery 
+attempts using a Live ISO carry real risk if the installer is 
+accidentally triggered — always verify "Try Ubuntu" vs "Install Ubuntu" 
+before proceeding past the first screen.

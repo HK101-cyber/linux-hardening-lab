@@ -51,3 +51,8 @@
 | 1.7.x   | Login warning banner (/etc/issue, /etc/issue.net) | 12 | Implemented |
 | 1.7.x   | SSH pre-auth banner configured | 12 | Implemented |
 | 1.7.x   | MOTD configured, no OS version leakage | 12 | Implemented |
+| DEB-0880 | fail2ban installed and configured for SSH (port 2222) | 13 | Implemented |
+| BOOT-5122 | GRUB bootloader password (with --unrestricted fix) | 13 | Implemented |
+| PKGS-7346 | Old/removed packages purged | 13 | Implemented |
+| AUTH-9230 | Password hashing rounds configured | 13 | Implemented |
+| FINAL | Final Lynis hardening index: 79/100 (baseline 57) | 13 | Complete |
