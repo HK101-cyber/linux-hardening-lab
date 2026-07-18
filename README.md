@@ -1,10 +1,10 @@
-# Linux Hardening Lab — CIS Benchmark Implementation
+# Linux Hardening Lab CIS Benchmark Implementation
 
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 ![Lynis](https://img.shields.io/badge/Lynis-57%20to%2079-brightgreen)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%2022.04-orange)
 
-Ubuntu Server 22.04 hardened to a CIS Benchmark Level 1 baseline across all 15 phases. Lynis auditing, PAM password policy, SSH key-based access control, kernel-level sysctl hardening, automated security patching, auditd, AIDE, AppArmor, and a fully automated hardening script. Real troubleshooting incidents documented, not edited out — including a full VM rebuild after a GRUB misconfiguration. See `hardening-log.md` and the [final report](reports/hardening-report.md).
+Ubuntu Server 22.04 hardened to a CIS Benchmark Level 1 baseline across all 15 phases. Lynis auditing, PAM password policy, SSH key-based access control, kernel-level sysctl hardening, automated security patching, auditd, AIDE, AppArmor, and a fully automated hardening script. Real troubleshooting incidents documented, not edited out including a full VM rebuild after a GRUB misconfiguration. See `hardening-log.md` and the [final report](reports/hardening-report.md).
 
 ## Lab Details
 
@@ -32,7 +32,6 @@ graph LR
 | Target System   | Ubuntu Server 22.04 LTS (192.168.56.101, hostname: seim-lab) |
 | Hypervisor      | VirtualBox                                                 |
 | Access Method   | SSH, ed25519 key-based auth, custom port 2222              |
-| Co-located Labs | ELK SIEM (Project 1) and Splunk (Project 2) — both live on this same VM |
 
 ## Phase Status
 
@@ -126,7 +125,7 @@ Lynis · AIDE · Auditd · UFW · fail2ban · AppArmor · CIS Ubuntu 22.04 LTS B
 
 ## Final Report
 
-The complete professional report — Executive Summary, Methodology, Before/After comparison, Risk Reduction Analysis, and the full rebuild incident narrative — is available at [`reports/hardening-report.md`](reports/hardening-report.md).
+The complete professional report Executive Summary, Methodology, Before/After comparison, Risk Reduction Analysis, and the full rebuild incident narrative is available at [`reports/hardening-report.md`](reports/hardening-report.md).
 
 ## Project Status
 
@@ -135,3 +134,6 @@ All 15 phases complete. Lynis Hardening Index improved from **57 to 79** (+22 po
 Part of a complete cybersecurity portfolio built command by command in a real lab environment.
 
 **GitHub:** [github.com/HK101-cyber](https://github.com/HK101-cyber)
+**LinkedIn:** [hammad-khan-sec](https://www.linkedin.com/in/hammad-khan-sec)
+**TryHackMe:** [PentesterHK](https://tryhackme.com/p/PentesterHK)
+**LetsDefend:** [HK101cyber](https://app.letsdefend.io/user/HK101cyber)
