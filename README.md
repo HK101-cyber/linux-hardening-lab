@@ -42,7 +42,7 @@ graph LR
 | 3 | Software and Updates                | ✅ Complete     |
 | 4 | Process Hardening                   | ✅ Complete     |
 | 5 | SSH Hardening                       | ✅ Complete     |
-| 6 | Password Policy                     | 🔄 In Progress  |
+| 6 | Password Policy                     | ✅ Complete (lockout via fail2ban, not pam_faillock) |
 | 7 | User and Group Security             | ✅ Complete     |
 | 8 | Auditd Configuration                | ✅ Complete     |
 | 9 | Network Hardening                   | ✅ Complete     |
@@ -50,7 +50,7 @@ graph LR
 | 11 | AppArmor                           | ✅ Complete     |
 | 12 | Login Banners and Warnings         | ✅ Complete     |
 | 13 | Final Lynis Scan                   | ✅ Complete     |
-| 14 | Automated Hardening Script         | ⬜ Not Started  |
+| 14 | Automated Hardening Script         | ✅ Complete     |
 | 15 | Professional Report                | ⬜ Not Started  |
 
 ## CIS Benchmark Controls Implemented
@@ -67,7 +67,7 @@ Full detail in `benchmarks/cis-controls-implemented.md`. Summary:
 | ASLR / kernel sysctl hardening        | Kernel hardening   | ✅ |
 | Password aging (90/7/14 days)         | 5.4.1.x            | ✅ |
 | Password complexity (pwquality)       | 5.3.1              | ✅ |
-| Account lockout (faillock)            | 5.3.2              | 🔄 Being redone — see hardening-log.md |
+| Account lockout (fail2ban - network level, replacing faillock) | 5.3.2 | ✅ Implemented — see hardening-log.md for architecture decision |
 
 ## Repository Structure
 linux-hardening-lab/

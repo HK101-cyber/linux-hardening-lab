@@ -182,3 +182,13 @@ is a common real-world misconfiguration. Also: full-disk recovery
 attempts using a Live ISO carry real risk if the installer is 
 accidentally triggered — always verify "Try Ubuntu" vs "Install Ubuntu" 
 before proceeding past the first screen.
+
+## Phase 14 — Automated Hardening Script (July 18, 2026)
+Created scripts/harden-ubuntu.sh - a single idempotent bash script 
+automating Phases 2,3,4,5,6,7,8,9,10,11,12, and 13's fail2ban quick win. 
+Deliberately excludes Phase 1 (baseline audit) and Phase 13's final 
+Lynis scan, since these are measurement/verification steps rather than 
+configuration changes - documented via a header comment in the script 
+itself. Tested with bash -n (syntax check) and a live run on the 
+rebuilt VM - confirmed idempotent (safe re-run caused no errors or 
+service disruption), SSH access verified working after execution.
