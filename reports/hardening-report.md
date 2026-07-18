@@ -3,7 +3,7 @@
 # Linux Hardening Lab Final Security Hardening Report
 
 **Prepared by:** Hammad Khan
-**Project:** Cybersecurity Portfolio — Project 6
+**Project:** Cybersecurity Portfolio Project Linux Hardening
 **Framework:** CIS Ubuntu Linux 22.04 LTS Benchmark (Level 1)
 **Repository:** github.com/HK101-cyber/linux-hardening-lab
 
